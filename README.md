@@ -1,7 +1,4 @@
 
-# Microsoft Engage 2022
-
-This project is being developed for Microsoft Engage 2022 mentorship program. In this project I have used Machine Learning algorithms and various other algorithms to implement movie recommendation system .
 
 
 ## Tech Stack
