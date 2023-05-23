@@ -8,18 +8,18 @@ const TopBanner = () => {
     btn: {
       margin: "1.2rem",
       color: "white",
-      border: "solid 1px #97ebf4",
+      border: "solid 1px white",
       backgroundColor: "black",
 
       "&:hover": {
-        background: "#e2e7e9",
+        background: "#2684AB",
         color: "black",
-        border: "solid 1px black",
+        border: "solid 1px #2684AB",
       },
     },
     topDiv: {
       height: "34rem",
-      backgroundColor: "#e2e7e9",
+      backgroundColor: "white",
       marginTop: "5.5rem",
       display: "flex",
       width:"100%",
@@ -32,12 +32,18 @@ const TopBanner = () => {
     },
     bannerImage: {
       
-      maxHeight: "100%",
-      maxWidth: "100%",
+      maxHeight: "90%",
+      maxWidth: "90%",
+      position : 'relative',
+      top : 120,
+      right : 0,
       "@media (max-width:780px)": {
         objectFit: "cover",
-        maxHeight: "90%",
-      maxWidth: "90%",
+        maxHeight: "80%",
+        maxWidth: "80%",
+        position : 'relative',
+        top : 10,
+        left : 15,
       },
     },
   }));
@@ -59,12 +65,12 @@ const TopBanner = () => {
             style={{
               color: "black",
               fontFamily: "Montserrat",
-              fontWeight: "500",
+              fontWeight: "600",
             }}
             variant="h2"
           >
             {" "}
-            Recom.me
+            Movies recommendations
           </Typography>
           <Typography
             style={{
@@ -75,8 +81,7 @@ const TopBanner = () => {
             }}
             variant="h5"
           >
-            We Uses Machine Learning Algorithm To Suggest You Best Movie On The
-            Internet
+            Welcome to our website! As a result of a school project, we uses machine learning to suggest you best movies contained in our dataset
           </Typography>
           <Button onClick={() => navigate(`/home`)} className={classes.btn}>
             Lets get Into Recom.me
@@ -84,12 +89,14 @@ const TopBanner = () => {
         </div>
 
         <div style={{ flex: 3, display: "inlineblock" }}>
-          <img
-            className={classes.bannerImage}
-            src="https://www.linkpicture.com/q/mPngtreemfamily-friends-gathering-to-watch_6447078.png"
-            alt="pngMovie"
-            srcset=""
-          />
+          <a href="https://www.utbm.fr//" target="_blank">
+            <img
+              className={classes.bannerImage}
+              src="https://th.bing.com/th/id/R.5dbb51645344997e9b4d31fb7342e8a0?rik=gKoLAn89%2bqxXyg&riu=http%3a%2f%2fwww.deviensingenieur.fr%2fservlet%2fcom.univ.collaboratif.utils.LectureFichiergw%3fCODE_FICHIER%3d1452530384705%26ID_FICHE%3d3664&ehk=LJgZty%2bGiTkIkAmrm5IAD9Vm0ku5I3cbdtPdbPA8C%2fA%3d&risl=&pid=ImgRaw&r=0"
+              alt="utbm"
+              srcset=""
+            />
+          </a>  
         </div>
       </div>
     </div>

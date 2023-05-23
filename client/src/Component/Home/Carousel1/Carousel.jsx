@@ -1,7 +1,7 @@
 import { Button, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import "react-alice-carousel/lib/alice-carousel.css";
-import AliceCarousel from "react-alice-carousel";
+import "react-taragam-carousel/lib/taragam-carousel.css";
+import TaragamCarousel from "react-taragam-carousel";
 import Axios from "axios";
 import { img_300 } from "../../../Config/Config";
 import { useNavigate } from "react-router-dom";
@@ -57,7 +57,7 @@ const Carousel = () => {
 
   return (
     <div className={classes.carousel}>
-      <AliceCarousel
+      <TaragamCarousel
         mouseTracking
         infinite
         autoPlayInterval={3000}

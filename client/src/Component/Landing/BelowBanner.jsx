@@ -12,7 +12,7 @@ const BelowBanner = () => {
       backgroundColor: "transparent",
       "&:hover": {
         background: "#e2e7e9",
-        color: "black",
+        color: "#2684AB",
         border: "solid 1px transparent",
         boxShadow: "-2px -4px 400px -37px rgba(158,158,158,0.95);",
       },
@@ -37,12 +37,14 @@ const BelowBanner = () => {
     <div className={classes.topDiv}>
       <div className={classes.box}>
         <div>
-          <img
-            style={{ objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}
-            src="https://acehacker.com/microsoft/engage2022/img/algorithms.png"
-            alt=""
-            srcset=""
-          />
+          <a href="https://www.geeksforgeeks.org/machine-learning/" target="_blank">
+            <img
+              style={{ objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}
+              src="https://acehacker.com/microsoft/engage2022/img/algorithms.png"
+              alt=""
+              srcset=""
+            />
+          </a>  
         </div>
         <Typography
           style={{
@@ -67,17 +69,19 @@ const BelowBanner = () => {
       </div>
       <div className={classes.box}>
         <div>
-          <img
-            style={{
-              objectFit: "cover",
-              maxHeight: "0%",
-              maxWidth: "72%",
-              width: "100%",
-            }}
-            src="https://blush.design/api/download?shareUri=us0Zf7tSpE3wmqIf&c=Hair_0%7Ec38741-0.2%7E711515-0.3%7Ec38741_Skin_0%7Ec26e5e-0.2%7Ef6cbc3-0.3%7Eecafa3&w=800&h=800&fm=png"
-            alt=""
-            srcset=""
-          />
+          <a href="/home">
+            <img
+              style={{
+                objectFit: "cover",
+                maxHeight: "0%",
+                maxWidth: "72%",
+                width: "100%",
+              }}
+              src="https://blush.design/api/download?shareUri=us0Zf7tSpE3wmqIf&c=Hair_0%7Ec38741-0.2%7E711515-0.3%7Ec38741_Skin_0%7Ec26e5e-0.2%7Ef6cbc3-0.3%7Eecafa3&w=800&h=800&fm=png"
+              alt=""
+              srcset=""
+            />
+          </a>  
         </div>
         <Typography
           style={{
@@ -96,7 +100,7 @@ const BelowBanner = () => {
             fontSize: "17px",
           }}
         >
-          Enjoy Latest And Trending Movie and Get Tons of Reviews of Every Movie
+          Want to dive in to recommendations, we can't wait to show you. 
         </Typography>
       </div>
     </div>

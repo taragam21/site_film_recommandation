@@ -20,8 +20,7 @@ const Banner = () => {
 
   return (
     <Container className={classes.bannerContent}>
-      <Carousel className={classes.Carousel} />
-
+      <Carousel className={classes.Carousel} /> 
       <GenreSort />
     </Container>
   );

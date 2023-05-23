@@ -1,9 +1,9 @@
 import { Button, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import "react-alice-carousel/lib/alice-carousel.css";
+import "react-taragam-carousel/lib/taragam-carousel.css";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import AliceCarousel from "react-alice-carousel";
+import TaragamCarousel from "react-taragam-carousel";
 import Axios from "axios";
 import { img_300 } from "../../Config/Config";
 import { useNavigate, useParams } from "react-router-dom";
@@ -188,7 +188,7 @@ const RecmCarousel = () => {
 
   return (
     <div className={classes.carousel}>
-      <AliceCarousel
+      <TaragamCarousel
         mouseTracking
         disableDotsControls
         items={items}
