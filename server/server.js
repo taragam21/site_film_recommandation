@@ -14,6 +14,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.json());
 
 
 app.use(
@@ -30,7 +31,7 @@ app.get('/recomm/:id', function (req, res) {
   // const { id } = useParams();
 
   // request(`http://127.0.0.1:5000/movie/Hulk`, function (error, response, body) {
-  request(`http://127.0.0.1:5000/movie/` + req.params.id, function (error, response, body) {
+  request(`http://127.0.0.1:5000/contentMovie/` + req.params.id, function (error, response, body) {
     console.error('error:', error); // Print the error
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     console.log('body:', body); // Print the data received
@@ -38,7 +39,17 @@ app.get('/recomm/:id', function (req, res) {
   });
 });
 
+app.get('/recommCollaborative/:id', function (res) {
+  // const { id } = useParams();
 
+  // request(`http://127.0.0.1:5000/movie/Hulk`, function (error, response, body) {
+  request(`http://127.0.0.1:5000/collaborativeMovie/`, function (error, response, body) {
+    console.error('error:', error); // Print the error
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the data received
+    res.send(body); //Display the response on the website
+  });
+});
 
 app.listen("5000", () => {
   console.log("Server is running! on PORT 5000");

@@ -66,6 +66,7 @@ const TopBanner = () => {
               color: "black",
               fontFamily: "Montserrat",
               fontWeight: "600",
+              fontSize: 45
             }}
             variant="h2"
           >

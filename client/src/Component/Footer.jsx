@@ -172,7 +172,7 @@ const Footer = ({ user }) => {
       >
         <div >
          <p><HomeIcon  style={{color: "white", padding: 10, marginBottom: -15}}/><b> 5 avenue Winston Churchill</b></p>
-         <p><EmailIcon style={{color: "white", padding: 10, marginBottom: -15}}/><b> group3@utbm.fr</b></p>
+         <p><EmailIcon style={{color: "white", padding: 10, marginBottom: -15}}/><b> utbm@utbm.fr</b></p>
          <p><CallIcon style={{color: "white", padding: 10, marginBottom: -15}}/><b> 07 89 58 65 23</b></p>
          <p><PrintIcon style={{color: "white", padding: 10, marginBottom: -15}}/><b>+01 245 144 25</b></p>
         </div>

@@ -6,6 +6,8 @@ import Axios from "axios";
 import { img_300 } from "../../Config/Config";
 import RecomCarousel from "./RecomCarousel";
 import ApiRecomCarousel from "./ApiRecomCarousel";
+import ColRecomCarousel from "./ColRecomCarousel";
+import ColApiRecomCarousel from "./ColApiRecomCarousel";
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -31,6 +33,18 @@ const DetailBanner = () => {
     fetchTrending();
   }, []);
 
+  const { idC } = useParams();
+  const [contentC, setContentC] = useState([]);
+  const fetchTrendingC = async () => {
+    const { dataC } = await Axios.get(
+      `https://api.themoviedb.org/3/movie/${10}?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US`
+    );
+    setContentC(dataC);
+  };
+
+  useEffect(() => {
+    fetchTrendingC();
+  }, []);
 
 
 const useStyle = makeStyles(() => ({
@@ -152,6 +166,25 @@ const classes=useStyle()
         </Typography>
         { arr.includes(id)?(
         <RecomCarousel/>):(<ApiRecomCarousel/>) }
+        {
+
+        }
+      </div>
+      <div style={{ marginTop: "102px" }}>
+        <Typography
+          variant="h5"
+          style={{
+            fontFamily: "Montserrat",
+            fontWeight: "700",
+            color: "white",
+            paddingTop: "102px",
+            paddingLeft: "30px",
+          }}
+        >
+          Liked by other users
+        </Typography>
+        { arr.includes(idC)?(
+        <ColRecomCarousel/>):(<ColApiRecomCarousel/>) }
         {
 
         }

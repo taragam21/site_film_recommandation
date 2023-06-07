@@ -11,7 +11,7 @@ export const Horror = () => {
           fontFamily: "Montserrat",
           fontWeight: "700",
           color: "white",
-          paddingTop: "52px",
+          paddingTop: "100px",
         }}
       >
         Horror{" "}
