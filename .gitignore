@@ -1,3 +1,4 @@
 node_modules
 server/credits.csv
 server/ratings.csv
+server/__pycache__/backend.cpython-39.pyc

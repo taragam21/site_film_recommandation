@@ -8,6 +8,7 @@ from flask import Flask, jsonify
 from ast import literal_eval
 
 import pandas as pd
+import backend 
 
 #Importing libraries for collaborative based filtering
 from surprise import Dataset, Reader
