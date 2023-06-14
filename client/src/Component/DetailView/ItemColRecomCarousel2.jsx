@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const ColRecmCarousel = () => {
+const ItemColRecomCarousel = () => {
   const useStyles = makeStyles(() => ({
     carousel: {
       marginTop: "42px",
@@ -100,4 +100,4 @@ const ColRecmCarousel = () => {
   );
 };
 
-export default ColRecmCarousel;
+export default ItemColRecomCarousel;

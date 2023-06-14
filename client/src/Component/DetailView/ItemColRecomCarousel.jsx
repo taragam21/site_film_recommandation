@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const ColRecomCarousel = () => {
+const ItemColRecomCarousel = () => {
   const useStyles = makeStyles(() => ({
     carousel: {
       marginTop: "42px",
@@ -23,15 +23,12 @@ const ColRecomCarousel = () => {
   let navigate = useNavigate();
   const classes = useStyles();
 
-  const [content, setContent] = useState([]);
-
-  // console.log(id);
-  // console.log(title);
+  const [content, setcontent] = useState([]);
 
   useEffect(() => {
     const fetchTrending = async () => {
-      const { data } = await Axios.get(`http://localhost:5000/recommCollaborative/` + title);
-      setContent(data);
+      const { data } = await Axios.get(`http://localhost:5000/itemCollaborativeMovie/` + title);
+      setcontent(data);
     };
     fetchTrending();
   }, [title]);
@@ -103,7 +100,7 @@ const ColRecomCarousel = () => {
 
   const items = [
     <Button
-      onClick={() => navigate(`/recomm/detail/${movie1.id}/${movie1.title}`)}
+      onClick={() => navigate(`/detail/${movie1.id}/${movie1.title}`)}
     >
       <div style={{ paddingInline: "0.5rem" }}>
         <img
@@ -117,7 +114,7 @@ const ColRecomCarousel = () => {
       </div>
     </Button>,
     <Button
-      onClick={() => navigate(`/recomm/detail/${movie2.id}/${movie2.title}`)}
+      onClick={() => navigate(`/detail/${movie2.id}/${movie2.title}`)}
     >
       <div style={{ paddingInline: "0.5rem" }}>
         <img
@@ -131,7 +128,7 @@ const ColRecomCarousel = () => {
       </div>
     </Button>,
     <Button
-      onClick={() => navigate(`/recomm/detail/${movie3.id}/${movie3.title}`)}
+      onClick={() => navigate(`/detail/${movie3.id}/${movie3.title}`)}
     >
       <div style={{ paddingInline: "0.5rem" }}>
         <img
@@ -145,7 +142,7 @@ const ColRecomCarousel = () => {
       </div>
     </Button>,
     <Button
-      onClick={() => navigate(`/recomm/detail/${movie4.id}/${movie4.title}`)}
+      onClick={() => navigate(`/detail/${movie4.id}/${movie4.title}`)}
     >
       <div style={{ paddingInline: "0.5rem" }}>
         <img
@@ -159,7 +156,7 @@ const ColRecomCarousel = () => {
       </div>
     </Button>,
     <Button
-      onClick={() => navigate(`/recomm/detail/${movie5.id}/${movie5.title}`)}
+      onClick={() => navigate(`/detail/${movie5.id}/${movie5.title}`)}
     >
       <div style={{ paddingInline: "0.5rem" }}>
         <img
@@ -222,4 +219,4 @@ const ColRecomCarousel = () => {
   );
 };
 
-export default ColRecomCarousel;
+export default ItemColRecomCarousel;

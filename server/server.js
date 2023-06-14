@@ -37,13 +37,15 @@ app.get('/recomm/:id', function (req, res) {
     console.log('body:', body); // Print the data received
     res.send(body); //Display the response on the website
   });
-});
 
-app.get('/recommCollaborative/:id', function (res) {
-  // const { id } = useParams();
+  request(`http://127.0.0.1:5000/itemCollaborativeMovie/` + req.params.id, function (error, response, body) {
+    console.error('error:', error); // Print the error
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the data received
+    res.send(body); //Display the response on the website
+  });
 
-  // request(`http://127.0.0.1:5000/movie/Hulk`, function (error, response, body) {
-  request(`http://127.0.0.1:5000/collaborativeMovie/`, function (error, response, body) {
+  request(`http://127.0.0.1:5000/userCollaborativeMovie/`  + req.params.id, function (error, response, body) {
     console.error('error:', error); // Print the error
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     console.log('body:', body); // Print the data received

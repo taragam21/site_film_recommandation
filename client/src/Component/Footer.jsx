@@ -69,8 +69,8 @@ const Footer = ({ user }) => {
       >
         {user ? (
           <>
-            <Typography style={{ color: "white" }}>
-              <Button>Hey Wassup {user.name.givenName}</Button>
+            <Typography>
+              <Button style={{ color: "white" }}>Hey Wassup {user.name.givenName}</Button>
             </Typography>
           </>
         ) : (

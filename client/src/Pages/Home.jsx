@@ -11,9 +11,9 @@ const Home = () => {
       <Banner />
 
       <Horror />
-      <Romance />
       <ScienceFiction />
       <Action />
+      <Romance />
     </div>
   );
 };

@@ -161,7 +161,7 @@ def get_content_recommendations(movie):
 #------------------------ Collaborative filtering --------------------------------- #
 # movie dataframe with votes more than 100
 movies['vote_count'] = pd.to_numeric(movies['vote_count'], errors='coerce')
-movie_md = movies[movies['vote_count'] > 250][['id', 'original_title']]
+movie_md = movies[movies['vote_count'] > 100000][['id', 'original_title']]
 
 # IDs of movies with count more than 55
 movie_ids = [int(x) for x in movie_md['id'].values]
@@ -181,6 +181,7 @@ data_md = Dataset.load_from_df(ratings[['userId','movieId','rating']], reader=re
 # Build trainset object(perform this only when you are using whole dataset to train)
 trainset = data_md.build_full_trainset()
 
+#------------ Item_based collaborative filtering ---------------------#
 #Declaring the similarity options.
 sim_options = {'name': 'cosine',
                'user_based': False}
@@ -191,8 +192,8 @@ sim_item = KNNBasic(sim_options=sim_options, verbose=False, random_state=33)
 # Train the algorithm on the trainset, and predict ratings for the testset
 sim_item.fit(trainset)
 
-@app.route('/collaborativeMovie', methods=['GET'])
-def get_collaborative_recommendations():
+@app.route('/itemCollaborativeMovie<string:movie>', methods=['GET'])
+def get_item_collaborative_recommendations(movie):
     existing_user_ids = data_md['user_id'].unique().tolist()
     user_id = random.choice(existing_user_ids)
     # creating an empty list to store the recommended product ids
@@ -232,6 +233,57 @@ def get_collaborative_recommendations():
 
     return jsonify(result)
 
+#------------ User_based collaborative filtering ---------------------#
+#Declaring the similarity options.
+sim_options = {'name': 'cosine',
+               'user_based': True}
+
+# KNN algorithm is used to find similar items
+sim_item = KNNBasic(sim_options=sim_options, verbose=False, random_state=33)
+
+# Train the algorithm on the trainset, and predict ratings for the testset
+sim_item.fit(trainset)
+
+@app.route('/userCollaborativeMovie:movie', methods=['GET'])
+def get_user_collaborative_recommendations(movie):
+    existing_user_ids = data_md['user_id'].unique().tolist()
+    user_id = random.choice(existing_user_ids)
+    # creating an empty list to store the recommended product ids
+    recommendations = []
+    
+    # creating an user item interactions matrix 
+    user_movie_interactions_matrix = ratings.pivot(index='userId', columns='movieId', values='rating')
+    
+    # extracting those product ids which the user_id has not interacted yet
+    non_interacted_movies = user_movie_interactions_matrix.loc[user_id][user_movie_interactions_matrix.loc[user_id].isnull()].index.tolist()
+    
+    # looping through each of the product ids which user_id has not interacted yet
+    for item_id in non_interacted_movies:
+        
+        # predicting the ratings for those non-interacted product ids by this user
+        est = sim_item.predict(user_id, item_id).est
+        
+        # appending the predicted ratings
+        movie_name = movie_md[movie_md['id'] == str(item_id)]['original_title'].values[0]
+        recommendations.append((item_id, est))
+
+    # sorting the predicted ratings in descending order
+    recommendations.sort(key=lambda x: x[1], reverse=True)
+    moviesList = recommendations[1:6]
+    mv1 = str(data[data['id'] == moviesList[0][0]]['id'].iloc[0])
+    mv2 = str(data[data['id'] == moviesList[1][0]]['id'].iloc[0])
+    mv3 = str(data[data['id'] == moviesList[2][0]]['id'].iloc[0])
+    mv4 = str(data[data['id'] == moviesList[3][0]]['id'].iloc[0])
+    mv5 = str(data[data['id'] == moviesList[4][0]]['id'].iloc[0])
+    result = {
+        "movie_name1": mv1,
+        "movie_name2": mv2,
+        "movie_name3": mv3,
+        "movie_name4": mv4,
+        "movie_name5": mv5,
+    }
+
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

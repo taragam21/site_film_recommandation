@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const ColApiRecomCarousel = () => {
+const UserColApiRecomCarousel = () => {
   const useStyles = makeStyles(() => ({
     carousel: {
       marginTop: "42px",
@@ -25,21 +25,19 @@ const ColApiRecomCarousel = () => {
 
   const [content, setContent] = useState([]);
 
-  // console.log(id);
-  // console.log(title);
-
   useEffect(() => {
     const fetchTrending = async () => {
       const { data } = await Axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/${49530}/recommendations?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US&page=1`
       );
       setContent(data.results);
     };
     fetchTrending();
   }, [title, id]);
+  console.log(content);
 
   const items = content.map((c) => (
-    <Button onClick={() => navigate(`/recomm/detail/${c.id}/${c.title}`)}>
+    <Button onClick={() => navigate(`/detail/${c.id}/${c.title}`)}>
       <div style={{ paddingInline: "0.5rem" }}>
         <img
           src={`${img_300}/${c.poster_path}`}
@@ -101,4 +99,4 @@ const ColApiRecomCarousel = () => {
   );
 };
 
-export default ColApiRecomCarousel;
+export default UserColApiRecomCarousel;

@@ -6,8 +6,10 @@ import Axios from "axios";
 import { img_300 } from "../../Config/Config";
 import RecomCarousel from "./RecomCarousel";
 import ApiRecomCarousel from "./ApiRecomCarousel";
-import ColRecomCarousel from "./ColRecomCarousel";
-import ColApiRecomCarousel from "./ColApiRecomCarousel";
+import ItemColRecomCarousel from "./ItemColRecomCarousel";
+import ItemColApiRecomCarousel from "./ItemColApiRecomCarousel";
+import UserColRecomCarousel from "./UserColRecomCarousel";
+import UserColApiRecomCarousel from "./UserColApiRecomCarousel";
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -33,19 +35,31 @@ const DetailBanner = () => {
     fetchTrending();
   }, []);
 
-  const { idC } = useParams();
-  const [contentC, setContentC] = useState([]);
-  const fetchTrendingC = async () => {
-    const { dataC } = await Axios.get(
-      `https://api.themoviedb.org/3/movie/${10}?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US`
+  const { idItemC } = useParams();
+  const [contentItemC, setcontentItemC] = useState([]);
+  const fetchTrendingItemC = async () => {
+    const { data } = await Axios.get(
+      `https://api.themoviedb.org/3/movie/${idItemC}?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US`
     );
-    setContentC(dataC);
+    setcontentItemC(data);
   };
 
   useEffect(() => {
-    fetchTrendingC();
+    fetchTrendingItemC();
   }, []);
 
+  const { idUserC } = useParams();
+  const [contentUserC, setcontentUserC] = useState([]);
+  const fetchTrendingUserC = async () => {
+    const { data} = await Axios.get(
+      `https://api.themoviedb.org/3/movie/${idUserC}?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US`
+    );
+    setcontentUserC(data);
+  };
+
+  useEffect(() => {
+    fetchTrendingUserC();
+  }, []);
 
 const useStyle = makeStyles(() => ({
    topdiv:{
@@ -177,14 +191,33 @@ const classes=useStyle()
             fontFamily: "Montserrat",
             fontWeight: "700",
             color: "white",
-            paddingTop: "102px",
+            paddingTop: "5px",
+            paddingLeft: "30px",
+          }}
+        >
+          Best similar movies
+        </Typography>
+        { arr.includes(idUserC)?(
+        <ItemColRecomCarousel/>):(<ItemColApiRecomCarousel/>) }
+        {
+
+        }
+      </div>
+      <div style={{ marginTop: "102px" }}>
+        <Typography
+          variant="h5"
+          style={{
+            fontFamily: "Montserrat",
+            fontWeight: "700",
+            color: "white",
+            paddingTop: "5px",
             paddingLeft: "30px",
           }}
         >
           Liked by other users
         </Typography>
-        { arr.includes(idC)?(
-        <ColRecomCarousel/>):(<ColApiRecomCarousel/>) }
+        { arr.includes(idItemC)?(
+        <UserColRecomCarousel/>):(<UserColApiRecomCarousel/>) }
         {
 
         }

@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const ApiRecomCarousel = () => {
+const ItemColApiRecomCarousel = () => {
   const useStyles = makeStyles(() => ({
     carousel: {
       marginTop: "42px",
@@ -20,23 +20,26 @@ const ApiRecomCarousel = () => {
     },
   }));
   const { id, title } = useParams();
+  const list=[19995,285,206647,5176,260346,1389,9894,8592,913,11091]
   let navigate = useNavigate();
   const classes = useStyles();
-
   const [content, setContent] = useState([]);
 
   useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * list.length);
+    const movieId = list[randomIndex];
     const fetchTrending = async () => {
       const { data } = await Axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=b9e11d2c8939104a4a755544e4eb8847&language=en-US&page=1`
       );
       setContent(data.results);
     };
     fetchTrending();
   }, [title, id]);
+  console.log(content);
 
   const items = content.map((c) => (
-    <Button onClick={() => navigate(`/recomm/detail/${c.id}/${c.title}`)}>
+    <Button onClick={() => navigate(`/detail/${c.id}/${c.title}`)}>
       <div style={{ paddingInline: "0.5rem" }}>
         <img
           src={`${img_300}/${c.poster_path}`}
@@ -98,4 +101,4 @@ const ApiRecomCarousel = () => {
   );
 };
 
-export default ApiRecomCarousel;
+export default ItemColApiRecomCarousel;
