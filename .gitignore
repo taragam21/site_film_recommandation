@@ -2,3 +2,8 @@ node_modules
 server/credits.csv
 server/ratings.csv
 server/__pycache__/backend.cpython-39.pyc
+notebook/credits.csv
+notebook/keywords.csv
+notebook/links.csv
+notebook/movies_metadata.csv
+notebook/ratings.csv

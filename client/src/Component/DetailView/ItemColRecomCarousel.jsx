@@ -100,7 +100,7 @@ const ItemColRecomCarousel = () => {
 
   const items = [
     <Button
-      onClick={() => navigate(`/detail/${movie1.id}/${movie1.title}`)}
+      onClick={() => navigate(`/recomm/detail/${movie1.id}/${movie1.title}`)}
     >
       <div style={{ paddingInline: "0.5rem" }}>
         <img

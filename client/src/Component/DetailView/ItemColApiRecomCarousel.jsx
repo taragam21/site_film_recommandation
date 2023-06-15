@@ -40,7 +40,7 @@ const ItemColApiRecomCarousel = () => {
   }, []);
 
   const items = content.map((c) => (
-    <Button onClick={() => navigate(`/detail/${c.id}/${c.title}`)}>
+    <Button onClick={() => navigate(`/recomm/detail/${c.id}/${c.title}`)}>
       <div style={{ paddingInline: "0.5rem" }}>
         <img
           src={`${img_300}/${c.poster_path}`}
