@@ -13,7 +13,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/AnuragRoshan/RecomSystem.git
+  https://github.com/taragam21/site_film_recommandation
 ```
 
 Install Python Libraries
